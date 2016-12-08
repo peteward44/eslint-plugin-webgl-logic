@@ -1,0 +1,27 @@
+{
+  "name": "eslint-plugin-webgl-logic",
+  "version": "1.0.0",
+  "description": "Custom eslint rules for the webgl logic module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peteward44/eslint-plugin-webgl-logic.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin"
+  ],
+  "author": "Pete Ward <peteward44@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peteward44/eslint-plugin-webgl-logic/issues"
+  },
+  "homepage": "https://github.com/peteward44/eslint-plugin-webgl-logic",
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.11.1"
+  }
+}
