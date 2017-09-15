@@ -1,4 +1,8 @@
 {
   "name": "eslint-plugin-webgl-logic",
-  "version": "1.2.0-snapshot.0"
+  "version": "1.1.0",
+  "tag": {
+    "commit": "a22bb3f698f6fb4779d95ad4972e028e0167fd25",
+    "branch": "master"
+  }
 }
