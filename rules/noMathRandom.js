@@ -6,6 +6,16 @@ module.exports = function(context) {
 		"MemberExpression": (node) => {
 			if ( node.object.name === "Math" && node.property.name === "random" ) {
 				context.report( { node, message: "Math.Random is forbidden" } );
+			} else if ( node.object.name === "_" ) {
+				if ( node.property.name === "shuffle" ) {
+					context.report( { node, message: "_.shuffle is forbidden as it uses Math.Random" } );
+				} else if ( node.property.name === "sample" ) {
+					context.report( { node, message: "_.sample is forbidden as it uses Math.Random" } );
+				} else if ( node.property.name === "random" ) {
+					context.report( { node, message: "_.random is forbidden as it uses Math.Random" } );
+				} else if ( node.property.name === "sampleSize" ) {
+					context.report( { node, message: "_.sampleSize is forbidden as it uses Math.Random" } );
+				}
 			}
 		}
     };

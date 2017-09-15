@@ -1,5 +1,4 @@
-# eslint-plugin-closuredepth
-Eslint plugin in order to provide warnings closure depth, and you can avoid the associated performance penalties
+# eslint-plugin-webgl-logic
 
 # Installation
 
@@ -9,34 +8,35 @@ Install [ESLint](https://www.github.com/eslint/eslint) either locally or globall
 $ npm install eslint
 ```
 
-If you installed `ESLint` globally, you have to install the closuredepth plugin globally too. Otherwise, install it locally.
+If you installed `ESLint` globally, you have to install the eslint-plugin-webgl-logic plugin globally too. Otherwise, install it locally.
 
 ```sh
-$ npm install eslint-plugin-closuredepth
+$ npm install eslint-plugin-webgl-logic
 ```
 
 # Configuration
 
-Add `plugins` section and specify ESLint-plugin-closuredepth as a plugin.
+Add `plugins` section and specify eslint-plugin-webgl-logic as a plugin.
 
 ```json
 {
   "plugins": [
-    "closuredepth"
+    "webgl-logic"
   ]
 }
 ```
 
-Add the rule, where 'limit' is your desired maximum depth
+Add rules
 
 ```json
 {
   "rules": {
-    "closuredepth/closuredepth": [ 2, { "limit": 3 } ]
+    "webgl-logic/noAsyncAwait": 2,
+		"webgl-logic/noMathRandom": 2
   }
 }
 ```
 
 # License
 
-ESLint-plugin-closuredepth is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+eslint-plugin-webgl-logic is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
