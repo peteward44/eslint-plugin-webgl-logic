@@ -6,7 +6,7 @@ module.exports = function(context) {
 		"MemberExpression": (node) => {
 			if ( node.object.name === "Math" && node.property.name === "random" ) {
 				context.report( { node, message: "Math.Random is forbidden" } );
-			} else if ( node.object.name === "_" ) {
+			} else if ( node.object.name === "_" || node.object.name === "lodash" ) {
 				if ( node.property.name === "shuffle" ) {
 					context.report( { node, message: "_.shuffle is forbidden as it uses Math.Random" } );
 				} else if ( node.property.name === "sample" ) {
