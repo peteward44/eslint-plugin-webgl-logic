@@ -2,6 +2,7 @@
 
 var noAsyncAwait = require("../rules/noAsyncAwait.js");
 var noMathRandom = require("../rules/noMathRandom.js");
+var noSetTimeout = require("../rules/noSetTimeout.js");
 var RuleTester = require("eslint").RuleTester;
 
 var ruleTester = new RuleTester();
@@ -92,4 +93,58 @@ ruleTester.run("noMathRandom", noMathRandom, {
 			errors: [ { message: "_.random is forbidden as it uses Math.Random" } ]
 		}
 	]
+});
+
+
+function generateSetTimeoutInvalidTests( funcName ) {
+	return [
+		{
+			code: funcName + "()",
+			errors: [ { message: "global " + funcName + " method is forbidden" } ]
+		},
+		{
+			code: funcName + "( function() {}, 500 );",
+			errors: [ { message: "global " + funcName + " method is forbidden" } ]
+		},
+		{
+			code: "function name() { " + funcName + "( function() {}, 1000 ); }",
+			errors: [ { message: "global " + funcName + " method is forbidden" } ]
+		},
+		{
+			code: "global." + funcName + "( function() {}, 500 );",
+			errors: [ { message: "global " + funcName + " method is forbidden" } ]
+		},
+		{
+			code: "function name() { global." + funcName + "( function() {}, 1000 ); }",
+			errors: [ { message: "global " + funcName + " method is forbidden" } ]
+		},
+		{
+			code: "window." + funcName + "( function() {}, 500 );",
+			errors: [ { message: "global " + funcName + " method is forbidden" } ]
+		},
+		{
+			code: "function name() { window." + funcName + "( function() {}, 1000 ); }",
+			errors: [ { message: "global " + funcName + " method is forbidden" } ]
+		}
+	];
+}
+
+var forbidden = ["setTimeout", "clearTimeout", "setInterval", "clearInterval"];
+var setTimeoutInvalidTests = [];
+for ( var i = 0; i < forbidden.length; ++i ) {
+	setTimeoutInvalidTests.concat( generateSetTimeoutInvalidTests( forbidden[i] ) );
+}
+
+
+ruleTester.run("noSetTimeout", noSetTimeout, {
+	valid: [
+		"setTimeout3()",
+		"asetTimeout( function() {}, 500 );",
+		"function name() { setTimeout2( function() {}, 1000 ); }",
+		"function name() { _setTimeout( function() {}, 1000 ); }",
+		"myobject.setTimeout( function() {}, 1000 );",
+		"function name() { myobject.setTimeout( function() {}, 1000 ); }"
+	],
+
+	invalid: setTimeoutInvalidTests
 });
