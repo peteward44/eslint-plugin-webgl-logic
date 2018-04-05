@@ -105,7 +105,7 @@ module.exports = {
 		const lines = sourceCode.lines;
 		
 		const option = context.options[0];
-        let maxLines = 100;
+        let maxLines = 200;
 		let ignoreComments = true;
 		let skipBlankLines = true;
 
