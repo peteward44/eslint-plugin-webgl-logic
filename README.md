@@ -32,7 +32,7 @@ Add rules
 {
   "rules": {
     "webgl-logic/noAsyncAwait": 2,
-		"webgl-logic/noMathRandom": 2
+    "webgl-logic/noMathRandom": 2
   }
 }
 ```
