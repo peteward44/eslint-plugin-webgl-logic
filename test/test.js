@@ -2,6 +2,8 @@
 
 var noAsyncAwait = require("../rules/noAsyncAwait.js");
 var noMathRandom = require("../rules/noMathRandom.js");
+var noPromiseAll = require("../rules/noPromiseAll.js");
+var noPromiseRace = require("../rules/noPromiseRace.js");
 var noSetTimeout = require("../rules/noSetTimeout.js");
 var RuleTester = require("eslint").RuleTester;
 
@@ -95,6 +97,43 @@ ruleTester.run("noMathRandom", noMathRandom, {
 	]
 });
 
+ruleTester.run("noPromiseAll", noPromiseAll, {
+	valid: [
+		"function prom() { return Promise.resolve(); }",
+		"function prom() { return Promise.reject(); }",
+		"var val = new Promise( function( res, rej ) { return 0; } );"
+	],
+
+	invalid: [
+		{
+			code: "function name() { return Promise.all( [Promise.resolve()] ); }",
+			errors: [ { message: "Promise.all is forbidden" } ]
+		},
+		{
+			code: "var funcptr = Promise.all;",
+			errors: [ { message: "Promise.all is forbidden" } ]
+		}
+	]
+});
+
+ruleTester.run("noPromiseRace", noPromiseRace, {
+	valid: [
+		"function prom() { return Promise.resolve(); }",
+		"function prom() { return Promise.reject(); }",
+		"var val = new Promise( function( res, rej ) { return 0; } );"
+	],
+
+	invalid: [
+		{
+			code: "function name() { return Promise.race( [Promise.resolve()] ); }",
+			errors: [ { message: "Promise.race is forbidden" } ]
+		},
+		{
+			code: "var funcptr = Promise.race;",
+			errors: [ { message: "Promise.race is forbidden" } ]
+		}
+	]
+});
 
 function generateSetTimeoutInvalidTests( funcName ) {
 	return [
