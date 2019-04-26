@@ -101,6 +101,7 @@ ruleTester.run("noPromiseAll", noPromiseAll, {
 	valid: [
 		"function prom() { return Promise.resolve(); }",
 		"function prom() { return Promise.reject(); }",
+		"Promise.someOtherProperty = {};",
 		"var val = new Promise( function( res, rej ) { return 0; } );"
 	],
 
@@ -120,6 +121,7 @@ ruleTester.run("noPromiseRace", noPromiseRace, {
 	valid: [
 		"function prom() { return Promise.resolve(); }",
 		"function prom() { return Promise.reject(); }",
+		"Promise.someOtherProperty = {};",
 		"var val = new Promise( function( res, rej ) { return 0; } );"
 	],
 
