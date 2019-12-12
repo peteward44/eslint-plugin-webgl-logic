@@ -4,6 +4,7 @@ var noAsyncAwait = require( "../rules/noAsyncAwait.js" );
 var noMathRandom = require( "../rules/noMathRandom.js" );
 var noPromiseAll = require( "../rules/noPromiseAll.js" );
 var noPromiseRace = require( "../rules/noPromiseRace.js" );
+var noPromiseConstructor = require( "../rules/noPromiseConstructor.js" );
 var noSetTimeout = require( "../rules/noSetTimeout.js" );
 var RuleTester = require( "eslint" ).RuleTester;
 
@@ -113,6 +114,36 @@ ruleTester.run( "noPromiseAll", noPromiseAll, {
 		{
 			code: "var funcptr = Promise.all;",
 			errors: [{ message: "Promise.all is forbidden" }]
+		}
+	]
+} );
+
+ruleTester.run( "noPromiseConstructor", noPromiseConstructor, {
+	valid: [
+		"function prom() { return Promise.resolve(); }",
+		"function prom() { return Promise.reject(); }",
+		"Promise.someOtherProperty = {};"
+	],
+
+	invalid: [
+		{
+			code: "var val = new Promise( function( res, rej ) { return 0; } );",
+			errors: [{ message: "Promise constructor is forbidden" }]
+		},
+		{
+			code: "var val = new Promise( ( res, rej ) => { return 0; } );",
+			parser: 'babel-eslint',
+			errors: [{ message: "Promise constructor is forbidden" }]
+		},
+		{
+			code: "var val = new global.Promise( ( res, rej ) => { return 0; } );",
+			parser: 'babel-eslint',
+			errors: [{ message: "Promise constructor is forbidden" }]
+		},
+		{
+			code: "var val = new window.Promise( ( res, rej ) => { return 0; } );",
+			parser: 'babel-eslint',
+			errors: [{ message: "Promise constructor is forbidden" }]
 		}
 	]
 } );
