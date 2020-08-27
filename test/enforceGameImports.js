@@ -38,7 +38,9 @@ ruleTester.run("enforceGameImports", rule, {
 		
         "import { something as somethingelse, another as anotherthing } from \"Logic_Shared\";",
         "import { something as somethingelse, another as anotherthing } from \"Client_Shared\";",
-		"import { something as somethingelse, another as anotherthing } from \"Assets_Shared\";"
+		"import { something as somethingelse, another as anotherthing } from \"Assets_Shared\";",
+		
+		"import \"../../../../Lib_Shared/Shared_Core/js/supportedJurisdictions.js\";"
     ],
     invalid: [{
         code: "import \"MyGame_Logic\"",

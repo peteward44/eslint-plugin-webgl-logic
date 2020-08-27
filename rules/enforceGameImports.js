@@ -198,6 +198,9 @@ module.exports = {
          * @private
          */
         function isRestrictedPattern(importSource) {
+			if ( importSource.startsWith( './' ) || importSource.startsWith( '../' ) ) {
+				return false;
+			}
 			const match = importSource.match( /(.*)(_Client|_Logic|_Assets|_Shared)(\/.*)?$/i );
 			if ( match ) {
 				return !['Game', 'Client', 'Shared', 'Logic', 'Assets'].includes( match[1] ); // needs exception made for Shared_Logic module
