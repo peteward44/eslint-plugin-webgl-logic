@@ -7,6 +7,7 @@ var noPromiseConstructor = require( './rules/noPromiseConstructor.js' );
 var noPromiseRace = require( './rules/noPromiseRace.js' );
 var noSetTimeout = require( './rules/noSetTimeout.js' );
 var maxLinesPerFunction = require( './rules/maxLinesPerFunction.js' );
+var enforceGameImports = require( './rules/enforceGameImports.js' );
 
 module.exports = {
 	rules: {
@@ -16,7 +17,8 @@ module.exports = {
 		"noPromiseConstructor": noPromiseConstructor,
 		"noPromiseRace": noPromiseRace,
 		"noSetTimeout": noSetTimeout,
-		"maxLinesPerFunction": maxLinesPerFunction
+		"maxLinesPerFunction": maxLinesPerFunction,
+		"enforceGameImports": enforceGameImports
 	},
 	rulesConfig: {
 		"noAsyncAwait": 2,
@@ -25,7 +27,8 @@ module.exports = {
 		"noPromiseConstructor": 2,
 		"noPromiseRace": 2,
 		"noSetTimeout": 2,
-		"maxLinesPerFunction": 1
+		"maxLinesPerFunction": 1,
+		"enforceGameImports": 2
 	}
 };
 

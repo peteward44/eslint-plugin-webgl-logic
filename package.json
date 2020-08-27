@@ -4,7 +4,7 @@
   "description": "Custom eslint rules for the webgl logic module",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js && node test/maxLinesPerFunction.js"
+    "test": "node test/test.js && node test/maxLinesPerFunction.js && node test/enforceGameImports.js"
   },
   "repository": {
     "type": "git",
