@@ -23,7 +23,7 @@
   "devDependencies": {},
   "dependencies": {
     "@babel/core": "7.12.10",
-    "@babel/eslint-parser": "7.12.1",
+	"babel-parser-inseinc": "7.12.11-fixed.1",
     "eslint": "7.18.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-plugin-import": "2.22.1",
