@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-webgl-logic",
-  "version": "1.10.0-snapshot.0",
+  "version": "1.11.0-snapshot.0",
   "description": "Custom eslint rules for the webgl logic module",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   "devDependencies": {},
   "dependencies": {
     "@babel/core": "7.12.10",
-	"babel-parser-inseinc": "7.12.11-fixed.1",
+    "babel-parser-inseinc": "7.12.11-fixed.1",
     "eslint": "7.18.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-plugin-import": "2.22.1",
