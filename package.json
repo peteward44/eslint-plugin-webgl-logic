@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-webgl-logic",
-  "version": "1.11.0-snapshot.0",
+  "version": "1.10.0",
   "description": "Custom eslint rules for the webgl logic module",
   "main": "index.js",
   "scripts": {
